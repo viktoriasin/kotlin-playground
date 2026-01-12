@@ -1,4 +1,4 @@
-package javaway;
+package taskmanager.javaway;
 
 import org.jetbrains.annotations.NotNull;
 

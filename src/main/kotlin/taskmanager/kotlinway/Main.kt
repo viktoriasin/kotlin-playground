@@ -1,4 +1,4 @@
-package ru.sinvic.kotlinway
+package ru.sinvic.taskmanager.kotlinway
 
 fun main() {
     val manager = TaskManager();
@@ -19,5 +19,4 @@ fun main() {
     manager.getTaskByType(TaskType.PERSONAL).forEach { task ->
         println(task)
     }
-
 }

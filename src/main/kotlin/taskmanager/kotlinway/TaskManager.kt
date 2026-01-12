@@ -1,7 +1,7 @@
-package ru.sinvic.kotlinway
+package ru.sinvic.taskmanager.kotlinway
 
 class TaskManager {
-    private val taskStorage = HashMap<Int, Task>();
+    private val taskStorage: MutableMap<Int, Task> = HashMap()
 
     operator fun plusAssign(task: Task) {
         taskStorage[task.id] = task
@@ -12,10 +12,9 @@ class TaskManager {
     }
 
     fun completeTask(id: Int) {
-        findTaskById(id)?.let { task ->
-            require(!task.isCompleted) { "Task with ID=$id is already completed" }
-            taskStorage[id] = task.copy(isCompleted = true)
-        } ?: throw NoSuchElementException("Task with ID=$id is not found")
+        val task = findTaskById(id) ?: return
+        if (task.isCompleted) return
+        taskStorage[id] = task.copy(isCompleted = true)
     }
 
     fun findTaskById(id: Int): Task? = taskStorage[id]
